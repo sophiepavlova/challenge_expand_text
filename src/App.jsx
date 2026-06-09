@@ -57,15 +57,15 @@ function TextExpander({
     setIsExpanded((cur) => !cur);
     console.log(isExpanded);
   }
-  console.log(children);
+  // console.log(children);
   const childrenArr = children.split(' ');
-  console.log(childrenArr);
+  // console.log(childrenArr);
   const childrenArrCropped = childrenArr.filter(
     (_, i) => i < collapsedNumWords,
   );
-  console.log(childrenArrCropped);
+  // console.log(childrenArrCropped);
   const childrenStr = childrenArrCropped.join(' ') + ' ...';
-  console.log(childrenStr);
+  // console.log(childrenStr);
   return (
     <div className={className}>
       {isExpanded ? children : childrenStr}
