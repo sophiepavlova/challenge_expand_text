@@ -13,3 +13,9 @@ body {
   border-radius: 7px;
   background-color: #f7f7f7;
 }
+
+.text {
+  padding: 20px;
+  font-size: 20px;
+  color: rgb(76, 41, 41);
+}

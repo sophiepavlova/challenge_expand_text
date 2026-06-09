@@ -41,7 +41,7 @@ function TextExpander({
   collapseButtonText = 'Show less',
   buttonColor = 'blue',
   expanded = false,
-  className = '',
+  className = 'text',
   children,
 }) {
   const buttonStyle = {
