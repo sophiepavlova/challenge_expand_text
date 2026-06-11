@@ -39,28 +39,37 @@ function TextExpander({
   collapsedNumWords = 10,
   expandButtonText = 'Show more',
   collapseButtonText = 'Show less',
-  buttonColor = '#1f09cd',
+  buttonColor = 'blue',
   expanded = false,
-  className,
+  className = 'text',
   children,
 }) {
-  const [isExpanded, setIsExpanded] = useState(expanded);
-  const displayText = isExpanded
-    ? children
-    : children.split(' ').slice(0, collapsedNumWords).join(' ') + '...';
-
   const buttonStyle = {
-    background: 'none',
-    border: 'none',
-    font: 'inherit',
-    marginLeft: '6px',
     color: buttonColor,
+    backgroundColor: 'transparent',
+    border: 'none',
     cursor: 'pointer',
   };
+
+  const [isExpanded, setIsExpanded] = useState(expanded);
+
+  function handleButtonClick() {
+    setIsExpanded((cur) => !cur);
+    console.log(isExpanded);
+  }
+  // console.log(children);
+  const childrenArr = children.split(' ');
+  // console.log(childrenArr);
+  const childrenArrCropped = childrenArr.filter(
+    (_, i) => i < collapsedNumWords,
+  );
+  // console.log(childrenArrCropped);
+  const childrenStr = childrenArrCropped.join(' ') + ' ...';
+  // console.log(childrenStr);
   return (
     <div className={className}>
-      <span>{displayText}</span>
-      <button style={buttonStyle} onClick={() => setIsExpanded((exp) => !exp)}>
+      {isExpanded ? children : childrenStr}
+      <button style={buttonStyle} onClick={handleButtonClick}>
         {isExpanded ? collapseButtonText : expandButtonText}
       </button>
     </div>
